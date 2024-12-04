@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mamv2/config/colors/colors.dart';
-import 'package:mamv2/repositories/csv_database.dart';
+
+import 'package:mamv2/repositories/trash_database.dart';
 import 'package:mamv2/shared/basic_app_bar.dart';
 
 class TrashListView extends StatefulWidget {
@@ -18,7 +19,8 @@ class _TrashListViewState extends State<TrashListView> {
   void initState() {
     super.initState();
     // Rufe die Methode zum Laden der Daten auf, sobald die Seite initialisiert ist
-    _futureData = CsvDatabase().getAllTrashInformation();
+    //! Hier ist dei Databaser Repository schon geändert
+    _futureData = TrashDatabase().getAllTrashInformation();
   }
 
   ThemeData mamTheme = ThemeData();
@@ -77,8 +79,8 @@ class _TrashListViewState extends State<TrashListView> {
   }
 }
 
-void main() {
-  runApp(const MaterialApp(
-    home: TrashListView(),
-  ));
-}
+// void main() {
+//   runApp(const MaterialApp(
+//     home: TrashListView(),
+//   ));
+// }

@@ -5,7 +5,7 @@ import 'package:mamv2/features/Abfall_ABC/widgets/switcher_container.dart';
 import 'package:mamv2/features/Muelltrennung/waste_separation_screen.dart';
 import 'package:mamv2/features/News/news_screen.dart';
 
-import 'package:mamv2/shared/csv_filtered.dart';
+import 'package:mamv2/features/Kalender/csv_filtered.dart';
 
 class ContentSwitcher extends StatelessWidget {
   const ContentSwitcher({

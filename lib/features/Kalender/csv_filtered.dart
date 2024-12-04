@@ -4,10 +4,6 @@ import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -47,7 +43,6 @@ class _InteractiveFilteredCalendarState
         _filteredData = List.from(_data); // Anfangs alle Daten anzeigen
       });
     } catch (e) {
-      print('Fehler beim Laden der CSV: $e');
       setState(() {
         _data = [];
         _filteredData = [];

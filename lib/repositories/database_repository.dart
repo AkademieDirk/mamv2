@@ -7,7 +7,7 @@ abstract class DatabaseRepository {
   //   String abfallart,
   //   String entsorgung,
   // );
-  Future<List<List<dynamic>>> getAllTrashInformation();
+//  Future<List<List<dynamic>>> getAllTrashInformation();
 
 //!--------------------------------------------------------
   // Hier alle Methoden zu den Usern

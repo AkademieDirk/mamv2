@@ -40,12 +40,6 @@ class MockDatabase implements DatabaseRepository {
   }
 
   @override
-  Future<List<List>> getAllTrashInformation() {
-    // TODO: implement getAllTrashInformation
-    throw UnimplementedError();
-  }
-
-  @override
   Future<List<User>> getAllUsers() {
     // TODO: implement getAllUsers
     throw UnimplementedError();

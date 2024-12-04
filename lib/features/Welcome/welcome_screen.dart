@@ -32,7 +32,7 @@ class WelcomeScreen extends StatelessWidget {
           ),
           verticalBigSpacing,
           SizedElevationButton(
-            screenname: ContentSwitcher(),
+            screenname: const ContentSwitcher(),
             text: "weiter als Gast",
           ),
           verticalSpacing,
@@ -40,13 +40,7 @@ class WelcomeScreen extends StatelessWidget {
           verticalSpacing,
           SizedElevationButton(
               text: "Registrierung", screenname: const RegistrationScreen())
-        ]
-                //   //! hier ist vorbereitet für Icons Login mit
-                //   const Row(
-                //     children: [],
-                //   )
-                // ],]),
-                )),
+        ])),
       ),
     );
   }
