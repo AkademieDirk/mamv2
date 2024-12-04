@@ -4,15 +4,12 @@ import 'package:mamv2/features/Abfall_ABC/widgets/sized_elevation_button.dart';
 import 'package:mamv2/features/Change_Screen/content_switcher.dart';
 import 'package:mamv2/features/Login_Registration/login_screen.dart';
 import 'package:mamv2/features/Login_Registration/registration_screen.dart';
-import 'package:mamv2/repositories/database_repository.dart';
-import 'package:mamv2/repositories/mock_database.dart';
 
 class WelcomeScreen extends StatelessWidget {
   WelcomeScreen({
     super.key,
-    required mockDataBase,
   });
-  final DatabaseRepository repository = MockDatabase();
+  //final DatabaseRepository repository = MockDatabase();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

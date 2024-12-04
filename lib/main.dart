@@ -19,7 +19,7 @@ class MainApp extends StatelessWidget {
       home: Scaffold(
         body:
             //theme: mamTheme,
-            WelcomeScreen(mockDataBase: mockDataBase),
+            WelcomeScreen(),
       ),
     );
   }
