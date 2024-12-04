@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mamv2/config/themes/themes.dart';
-import 'package:mamv2/features/Abfall_ABC/screens/list_view_trash.dart';
+import 'package:mamv2/features/experimental%20features/list_view_trash.dart';
 import 'package:mamv2/repositories/mock_database.dart';
 import 'package:mamv2/shared/basic_app_bar.dart';
 
