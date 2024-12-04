@@ -1,4 +1,5 @@
 name: mamv2
+
 description: "A new Flutter project."
 publish_to: 'none'
 version: 0.1.0
@@ -7,13 +8,59 @@ environment:
   sdk: ^3.5.2
 
 dependencies:
+  csv: ^6.0.0
   flutter:
     sdk: flutter
+  flutter_launcher_icons: ^0.14.1
+  flutter_social_button: ^1.1.4+1
+  font_awesome_flutter: ^10.8.0
+  glass_container: ^0.0.4
+  http: ^1.2.2
+  shared_preferences: ^2.3.3
+  syncfusion_flutter_calendar: ^27.2.4
+  webview_flutter: ^4.10.0
+  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
+  flutter_lints: ^4.0.0 
+
+
+flutter_icons:
+  android: true
+  ios: true
+  adaptive_icon_background: "assets/icons/Logos/logo.png" 
+  adaptive_icon_foreground: "assets/icons/Logos/logo.png"
+  image_path: "assets/icons/Logos/logo.png"
 
 flutter:
   uses-material-design: true
+
+  assets:
+    
+    - assets/icons/ContentSwitcher/
+    - assets/images/
+    - assets/icons/
+    - assets/icons/Logos/logo-transparent.png
+    - assets/icons/Logos/google_logo.png
+    - assets/icons/Calendar/
+    - assets/images/News/
+    - assets/images/TrashCanColor/
+    - assets/images/TrashCanColor/Muellabfuhr.jpeg
+    - assets/sheets/streets.csv
+    - assets/sheets/Testcsv.csv
+    - assets/sheets/abfallABCv1.csv
+    - assets/images/ABC.png
+   
+
+
+
+fonts:
+    - family: Urbanist
+      fonts:
+        - asset: assets/fonts/Urbanist-Regular.ttf
+        - asset: assets/fonts/Urbanist-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Urbanist-Italic.ttf
+          style: italic

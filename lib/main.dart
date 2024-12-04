@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:mamv2/features/Welcome/welcome_screen.dart';
+
+import 'package:mamv2/repositories/mock_database.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(MainApp());
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  MainApp({
+    super.key,
+  });
 
+  final MockDatabase mockDataBase = MockDatabase();
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+        body:
+            //theme: mamTheme,
+            WelcomeScreen(mockDataBase: mockDataBase),
       ),
     );
   }
