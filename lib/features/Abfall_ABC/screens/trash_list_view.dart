@@ -3,6 +3,8 @@
 import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mamv2/config/colors/colors.dart';
+import 'package:mamv2/config/themes/themes.dart';
 
 class ListViewTrashAbcNew extends StatefulWidget {
   const ListViewTrashAbcNew({super.key});
@@ -58,47 +60,51 @@ class ListViewTrashAbcNewState extends State<ListViewTrashAbcNew> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Wie entsorge ich was?"),
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              onChanged: _filterData, // Filtert die Daten bei jeder Eingabe
-              decoration: const InputDecoration(
-                labelText: "Suche",
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.search),
-              ),
-            ),
-          ),
-          Expanded(
-            child: _filteredData.isEmpty
-                ? const Center(child: CircularProgressIndicator())
-                : InteractiveViewer(
-                    constrained: false,
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: DataTable(
-                        columnSpacing: 10,
-                        columns: const [
-                          DataColumn(label: Text('Bezeichnung')),
-                          DataColumn(label: Text('Entsorgung')),
-                        ],
-                        rows: _filteredData.map((row) {
-                          return DataRow(cells: [
-                            DataCell(Text(row[0].toString())), // Straße
-                            DataCell(Text(row[1].toString())), // Restabfall
-                          ]);
-                        }).toList(),
-                      ),
-                    ),
+        appBar: AppBar(
+          backgroundColor: appbarcolor,
+          title: const Text("Wie entsorge ich was?"),
+        ),
+        body: Container(
+          width: double.infinity,
+          decoration: background,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  onChanged: _filterData, // Filtert die Daten bei jeder Eingabe
+                  decoration: const InputDecoration(
+                    labelText: "Suche",
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.search),
                   ),
+                ),
+              ),
+              Expanded(
+                child: _filteredData.isEmpty
+                    ? const Center(child: CircularProgressIndicator())
+                    : InteractiveViewer(
+                        constrained: false,
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: DataTable(
+                            columnSpacing: 10,
+                            columns: const [
+                              DataColumn(label: Text('Bezeichnung')),
+                              DataColumn(label: Text('Entsorgung')),
+                            ],
+                            rows: _filteredData.map((row) {
+                              return DataRow(cells: [
+                                DataCell(Text(row[0].toString())), // Straße
+                                DataCell(Text(row[1].toString())), // Restabfall
+                              ]);
+                            }).toList(),
+                          ),
+                        ),
+                      ),
+              ),
+            ],
           ),
-        ],
-      ),
-    );
+        ));
   }
 }
