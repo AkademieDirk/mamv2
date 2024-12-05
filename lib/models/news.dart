@@ -1,13 +1,11 @@
 class News {
-  final int id;
   final String title;
   final String description;
-  final String imageUrl;
+  final String urlToImage;
 
   News({
-    required this.id,
     required this.title,
     required this.description,
-    required this.imageUrl,
+    required this.urlToImage,
   });
 }

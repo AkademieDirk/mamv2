@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mamv2/config/themes/themes.dart';
 import 'package:mamv2/features/Welcome/welcome_screen.dart';
 
 void main() {
@@ -13,10 +14,9 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: mamTheme,
       home: Scaffold(
-        body:
-            //theme: mamTheme,
-            WelcomeScreen(),
+        body: WelcomeScreen(),
       ),
     );
   }

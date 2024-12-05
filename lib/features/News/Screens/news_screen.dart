@@ -1,8 +1,8 @@
+import 'dart:convert';
+import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:mamv2/config/themes/themes.dart';
+import 'package:http/http.dart' as http;
 import 'package:mamv2/features/News/news_container.dart';
-import 'package:mamv2/models/news.dart';
-
 import 'package:mamv2/shared/basic_app_bar.dart';
 
 class NewsScreen extends StatefulWidget {
@@ -15,77 +15,70 @@ class NewsScreen extends StatefulWidget {
 }
 
 class _NewsScreenState extends State<NewsScreen> {
-// Hier erstelle ich eine Liste in die später die Json Daten reingepackt werden
-  List<News> newsData = [];
+  // Variablen für die News
+  String title = "Lade die aktuellen News";
+  String content = "Unbekannt";
+  String urlToImage = "unbekannt";
+  String url = "unbekannt";
+
+  @override
+  void initState() {
+    super.initState();
+    // Beim Start der Seite rufen wir diese Methode auf
+    _randomNews();
+  }
+
+  // Methode zum Abrufen der News
+  Future<void> _randomNews() async {
+    final Uri uri = Uri.https('newsapi.org', '/v2/everything', {
+      'q': 'Ruhrgebiet', // Suchbegriff für Nachrichten
+      'apiKey': 'd54d923ea5fa477f95cb9b9d03ababf5',
+    });
+
+    final http.Response response = await http.get(uri);
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      Random random =
+          Random(); // hier wird eine Instanz der random Klasse erstellt
+
+      int randomNumber = random.nextInt(10) + 1;
+      final article = data['articles']
+          [randomNumber]; // ein zufälliger Artikel zwischen 1 und 10
+
+      setState(() {
+        // Aktuelle News in Variablen speichern
+        title = article['title'] ?? "Kein Titel verfügbar";
+        content = article['content'] ?? "Keine Beschreibung verfügbar";
+        urlToImage = article['urlToImage'] ?? "Kein Bild verfügbar";
+        url = article["url"];
+        randomNumber;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const BasicAppBar(
-          title: "Aktuelle Meldungen",
-          canColorImagePath: "assets/images/News/news.jpg",
-          textcolor: Colors.black),
-      body: Container(
-          width: double.infinity,
-          decoration: background,
-          child: SafeArea(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  verticalSpacing,
-                  verticalSpacing,
-                  GestureDetector(
-                    onTap: () {
-                      alertDialogNews(context);
-                    },
-                    child: const NewsContainer(
-                      newsimagepath: "assets/images/News/Blaue_Tonne_news.jpg",
-                      text: "Papierabfuhr erfolgt später",
-                    ),
-                  ),
-                  verticalMediumSpacing,
-                  const NewsContainer(
-                      text: "Der Verkehr rollt wieder auf der Loekampstraße",
-                      newsimagepath: "assets/images/News/NewsLoekampstr.jpg"),
-                  verticalMediumSpacing,
-                  const NewsContainer(
-                      text: "Der Herbst ist da: Die Laubabfuhr startet",
-                      newsimagepath: "assets/images/News/Herbst.jpg"),
-                  verticalMediumSpacing,
-                  const NewsContainer(
-                      text: "Der Herbst ist da: Die Laubabfuhr startet",
-                      newsimagepath: "assets/images/News/Herbst.jpg")
-                ],
+        appBar: const BasicAppBar(
+            title: "Aktuelle Meldungen",
+            canColorImagePath: "assets/images/News/news.jpg",
+            textcolor: Colors.black),
+        body: Column(
+          children: [
+            Center(
+              child: NewsContainer(
+                title: title,
+                urlToImage: urlToImage,
+                content: content,
               ),
             ),
-          )),
-    );
-  }
-}
-
-//! Hier wird gerade getestet mit dem Alert Dialog. Dazu muss ich noch ein  News Repository anlegen
-Future<dynamic> alertDialogNews(BuildContext context) {
-  return showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: const Text("Titel"),
-        content: const Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text("Überschrift"),
-            Text("Nachricht"),
-            Image(image: AssetImage("assets/images/News/news.jpg"))
+            ElevatedButton(
+                onPressed: () {
+                  _randomNews();
+                },
+                child: const Text("noch mehr News"))
           ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop(); // Schließt den Dialog
-            },
-            child: const Text("ActionsText"),
-          ),
-        ],
-      );
-    },
-  );
+        ));
+  }
 }
