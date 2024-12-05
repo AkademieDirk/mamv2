@@ -23,10 +23,10 @@ class NewsScreen extends StatefulWidget {
   const NewsScreen({super.key});
 
   @override
-  _NewsScreenState createState() => _NewsScreenState();
+  NewsScreenState createState() => NewsScreenState();
 }
 
-class _NewsScreenState extends State<NewsScreen> {
+class NewsScreenState extends State<NewsScreen> {
   // hier stehen die Werte beim Start drin
   String title = "Lade die aktuellen News";
   String description = "Unbekannt";
@@ -144,7 +144,7 @@ class _NewsScreenState extends State<NewsScreen> {
             ElevatedButton(
                 onPressed: _clearNews,
                 child: const Text("Letzte News löschen")),
-            Container(child: Image.network(urlToImage))
+            Image.network(urlToImage)
           ],
         ),
       ),
