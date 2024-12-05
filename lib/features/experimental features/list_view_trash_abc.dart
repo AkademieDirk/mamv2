@@ -8,18 +8,18 @@ class TrashListView extends StatefulWidget {
   const TrashListView({super.key});
 
   @override
-  _TrashListViewState createState() => _TrashListViewState();
+  TrashListViewState createState() => TrashListViewState();
 }
 
-class _TrashListViewState extends State<TrashListView> {
+class TrashListViewState extends State<TrashListView> {
   // Diese Variable speichert das Future mit den geladenen Daten
   Future<List<List<dynamic>>>? _futureData;
 
   @override
   void initState() {
     super.initState();
-    // Rufe die Methode zum Laden der Daten auf, sobald die Seite initialisiert ist
-    //! Hier ist dei Databaser Repository schon geändert
+    // Rufe die Methode zum Laden der Daten auf, sobald die Seite gestartet ist
+    //! Hier ist das Database Repository schon geändert auf Trash Database
     _futureData = TrashDatabase().getAllTrashInformation();
   }
 
@@ -78,9 +78,3 @@ class _TrashListViewState extends State<TrashListView> {
     );
   }
 }
-
-// void main() {
-//   runApp(const MaterialApp(
-//     home: TrashListView(),
-//   ));
-// }

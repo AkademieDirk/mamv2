@@ -4,28 +4,14 @@ import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class ListViewTrashAbcNew extends StatefulWidget {
+  const ListViewTrashAbcNew({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: InteractiveFilteredCalendar(),
-    );
-  }
+  ListViewTrashAbcNewState createState() => ListViewTrashAbcNewState();
 }
 
-class InteractiveFilteredCalendar extends StatefulWidget {
-  const InteractiveFilteredCalendar({super.key});
-
-  @override
-  InteractiveFilteredCalendarState createState() =>
-      InteractiveFilteredCalendarState();
-}
-
-class InteractiveFilteredCalendarState
-    extends State<InteractiveFilteredCalendar> {
+class ListViewTrashAbcNewState extends State<ListViewTrashAbcNew> {
   List<List<dynamic>> _data = [];
   List<List<dynamic>> _filteredData = []; // Für die gefilterten Daten
   String _searchQuery = ""; // Für den Suchtext
@@ -33,13 +19,14 @@ class InteractiveFilteredCalendarState
   // Laden und Filtern der CSV-Daten
   void _loadCSV() async {
     try {
-      final rawData = await rootBundle.loadString("assets/sheets/streets.csv");
+      final rawData =
+          await rootBundle.loadString("assets/sheets/abfallABCv1.csv");
       List<List<dynamic>> listData =
           const CsvToListConverter().convert(rawData, fieldDelimiter: ";");
 
       // Nur Zeilen mit mindestens 5 Spalten speichern
       setState(() {
-        _data = listData.where((row) => row.length >= 5).toList();
+        _data = listData.where((row) => row.length >= 2).toList();
         _filteredData = List.from(_data); // Anfangs alle Daten anzeigen
       });
     } catch (e) {
@@ -72,7 +59,7 @@ class InteractiveFilteredCalendarState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Der interaktive Müllkalender"),
+        title: const Text("Wie entsorge ich was?"),
       ),
       body: Column(
         children: [
@@ -95,21 +82,15 @@ class InteractiveFilteredCalendarState
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: DataTable(
-                        columnSpacing: 20,
+                        columnSpacing: 10,
                         columns: const [
-                          DataColumn(label: Text('Straße')),
-                          DataColumn(label: Text('Restabfall')),
-                          DataColumn(label: Text('Bio')),
-                          DataColumn(label: Text('Wertstoff')),
-                          DataColumn(label: Text('Papier')),
+                          DataColumn(label: Text('Bezeichnung')),
+                          DataColumn(label: Text('Entsorgung')),
                         ],
                         rows: _filteredData.map((row) {
                           return DataRow(cells: [
                             DataCell(Text(row[0].toString())), // Straße
                             DataCell(Text(row[1].toString())), // Restabfall
-                            DataCell(Text(row[2].toString())), // Bio
-                            DataCell(Text(row[3].toString())), // Wertstoff
-                            DataCell(Text(row[4].toString())), // Papier
                           ]);
                         }).toList(),
                       ),

@@ -35,25 +35,21 @@ class MockDatabase implements DatabaseRepository {
 
   @override
   Future<void> editUser(User user) {
-    // TODO: implement editUser
     throw UnimplementedError();
   }
 
   @override
   Future<List<User>> getAllUsers() {
-    // TODO: implement getAllUsers
     throw UnimplementedError();
   }
 
   @override
   Future<bool> login({required String userName, required String password}) {
-    // TODO: implement login
     throw UnimplementedError();
   }
 
   @override
   Future<void> logout() {
-    // TODO: implement logout
     throw UnimplementedError();
   }
 }

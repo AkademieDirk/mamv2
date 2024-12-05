@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mamv2/config/themes/themes.dart';
-import 'package:mamv2/features/Abfall_ABC/screens/list_view_trash_abc.dart';
+import 'package:mamv2/features/Abfall_ABC/screens/trash_list_view.dart';
 import 'package:mamv2/features/Abfall_ABC/widgets/switcher_container.dart';
-import 'package:mamv2/features/Muelltrennung/waste_separation_screen.dart';
-import 'package:mamv2/features/News/news_screen.dart';
-
 import 'package:mamv2/features/Kalender/csv_filtered.dart';
+import 'package:mamv2/features/Muelltrennung/waste_separation_screen.dart';
+import 'package:mamv2/features/News/Screens/news_screen.dart';
 
 class ContentSwitcher extends StatelessWidget {
   const ContentSwitcher({
@@ -25,6 +24,7 @@ class ContentSwitcher extends StatelessWidget {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) =>
                           const InteractiveFilteredCalendar()));
+                  //InteractiveFilteredCalendar()));
                 },
                 child: const SwitcherContainer(
                   picturepath: "assets/icons/ContentSwitcher/Calendar.png",
@@ -61,7 +61,7 @@ class ContentSwitcher extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const TrashListView()));
+                          builder: (context) => const ListViewTrashAbcNew()));
                 },
                 child: const SwitcherContainer(
                     picturepath: "assets/icons/ContentSwitcher/AbfallABC.png",

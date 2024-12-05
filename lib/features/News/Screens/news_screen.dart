@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:mamv2/config/themes/themes.dart';
 import 'package:mamv2/features/News/news_container.dart';
+import 'package:mamv2/models/news.dart';
 
 import 'package:mamv2/shared/basic_app_bar.dart';
 
-class NewsScreen extends StatelessWidget {
+class NewsScreen extends StatefulWidget {
   const NewsScreen({
     super.key,
   });
 
+  @override
+  State<NewsScreen> createState() => _NewsScreenState();
+}
+
+class _NewsScreenState extends State<NewsScreen> {
+// Hier erstelle ich eine Liste in die später die Json Daten reingepackt werden
+  List<News> newsData = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
