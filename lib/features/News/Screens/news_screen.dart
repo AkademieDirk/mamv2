@@ -65,24 +65,26 @@ class _NewsScreenState extends State<NewsScreen> {
             title: "Aktuelle Meldungen",
             canColorImagePath: "assets/images/News/news.jpg",
             textcolor: Colors.black),
-        body: Container(
-            width: double.infinity,
-            decoration: background,
-            child: Column(
-              children: [
-                Center(
-                  child: NewsContainer(
-                    title: title,
-                    urlToImage: urlToImage,
-                    content: content,
+        body: SingleChildScrollView(
+          child: Container(
+              width: double.infinity,
+              decoration: background,
+              child: Column(
+                children: [
+                  Center(
+                    child: NewsContainer(
+                      title: title,
+                      urlToImage: urlToImage,
+                      content: content,
+                    ),
                   ),
-                ),
-                ElevatedButton(
-                    onPressed: () {
-                      _randomNews();
-                    },
-                    child: const Text("noch mehr News"))
-              ],
-            )));
+                  ElevatedButton(
+                      onPressed: () {
+                        _randomNews();
+                      },
+                      child: const Text("noch mehr News"))
+                ],
+              )),
+        ));
   }
 }

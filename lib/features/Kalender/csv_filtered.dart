@@ -75,7 +75,7 @@ class InteractiveFilteredCalendarState
     return Scaffold(
         appBar: AppBar(
           backgroundColor: appbarcolor,
-          title: const Text("Wie entsorge ich was?"),
+          title: const Text("Wann muss die Tonne raus?"),
         ),
         body: Container(
           width: double.infinity,
