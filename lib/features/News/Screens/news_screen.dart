@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:mamv2/config/themes/themes.dart';
 import 'package:mamv2/features/News/news_container.dart';
 import 'package:mamv2/shared/basic_app_bar.dart';
 
@@ -64,21 +65,24 @@ class _NewsScreenState extends State<NewsScreen> {
             title: "Aktuelle Meldungen",
             canColorImagePath: "assets/images/News/news.jpg",
             textcolor: Colors.black),
-        body: Column(
-          children: [
-            Center(
-              child: NewsContainer(
-                title: title,
-                urlToImage: urlToImage,
-                content: content,
-              ),
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  _randomNews();
-                },
-                child: const Text("noch mehr News"))
-          ],
-        ));
+        body: Container(
+            width: double.infinity,
+            decoration: background,
+            child: Column(
+              children: [
+                Center(
+                  child: NewsContainer(
+                    title: title,
+                    urlToImage: urlToImage,
+                    content: content,
+                  ),
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      _randomNews();
+                    },
+                    child: const Text("noch mehr News"))
+              ],
+            )));
   }
 }
