@@ -75,6 +75,7 @@ class _NewsScreenState extends State<NewsScreen> {
                     title: title,
                     urlToImage: urlToImage,
                     content: content,
+                    url: url,
                   ),
                 ),
                 ElevatedButton(

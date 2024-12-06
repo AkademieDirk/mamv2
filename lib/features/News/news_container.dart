@@ -8,16 +8,18 @@ class NewsContainer extends StatelessWidget {
     required this.title,
     required this.urlToImage,
     required this.content,
+    required this.url,
   });
   final String title;
   final String content;
   final String urlToImage;
+  final String url;
 
-  void _launchURL(String url) async {
-    if (await canLaunchUrl(url as Uri)) {
-      await launchUrl(url as Uri);
-    } else {
-      throw 'Could not launch $url';
+  // Anmedelnde mit Apple
+  Future<void> _launchUrlA() async {
+    final Uri urla = Uri.parse(url);
+    if (!await launchUrl(urla)) {
+      throw Exception("Seite konnte nicht geladen werden $urla");
     }
   }
 
@@ -45,7 +47,7 @@ class NewsContainer extends StatelessWidget {
         ),
         verticalSmallSpacing,
         GestureDetector(
-            onTap: () => _launchURL("https:www.google.de"),
+            onTap: () => _launchUrlA(),
             child:
                 const Center(child: Text("Hier geht zum kompletten Artikel"))),
         verticalMediumSpacing,
