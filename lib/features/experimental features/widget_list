@@ -1,0 +1,205 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Widget Attribute Explorer',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const WidgetSelector(),
+    );
+  }
+}
+
+class WidgetSelector extends StatefulWidget {
+  const WidgetSelector({super.key});
+
+  @override
+  _WidgetSelectorState createState() => _WidgetSelectorState();
+}
+
+class _WidgetSelectorState extends State<WidgetSelector> {
+  String? selectedWidget;
+  List<Map<String, String>> attributes = [];
+
+  void setAttributes(String widgetName) {
+    switch (widgetName) {
+      case 'Container':
+        attributes = [
+          {
+            'Attribut': 'padding',
+            'Erklärung':
+                'Bestimmt den Innenabstand des Containers (Abstand zwischen dem Inhalt und dem Rand des Containers).'
+          },
+          {
+            'Attribut': 'margin',
+            'Erklärung':
+                'Bestimmt den Außenabstand des Containers (Abstand zwischen dem Container und seinen Nachbarn).'
+          },
+          {
+            'Attribut': 'alignment',
+            'Erklärung':
+                'Bestimmt die Ausrichtung des Inhalts innerhalb des Containers.'
+          },
+          {
+            'Attribut': 'color',
+            'Erklärung': 'Bestimmt die Hintergrundfarbe des Containers.'
+          },
+          {
+            'Attribut': 'decoration',
+            'Erklärung':
+                'Ermöglicht es, eine komplexe Gestaltung für den Container festzulegen, z. B. Ränder, Schatten, Gradienten.'
+          },
+          {
+            'Attribut': 'width',
+            'Erklärung': 'Bestimmt die Breite des Containers.'
+          },
+          {
+            'Attribut': 'height',
+            'Erklärung': 'Bestimmt die Höhe des Containers.'
+          },
+          {
+            'Attribut': 'child',
+            'Erklärung':
+                'Das Widget, das innerhalb des Containers angezeigt wird.'
+          },
+          {
+            'Attribut': 'constraints',
+            'Erklärung':
+                'Ermöglicht es, Constraints für den Container festzulegen, z. B. Maximal- oder Minimalgröße.'
+          },
+          {
+            'Attribut': 'clipBehavior',
+            'Erklärung':
+                'Bestimmt, wie der Container Inhalte schneidet, wenn sie über den Rand hinausgehen.'
+          },
+          {
+            'Attribut': 'shape',
+            'Erklärung':
+                'Bestimmt die Form des Containers (z. B. BoxShape.rectangle, BoxShape.circle).'
+          },
+          {
+            'Attribut': 'boxShadow',
+            'Erklärung': 'Ermöglicht das Hinzufügen von Schatten zum Container.'
+          },
+        ];
+        break;
+      case 'TextFormField':
+        attributes = [
+          {
+            'Attribut': 'labelText',
+            'Erklärung':
+                'Zeigt den Text an, der als Beschriftung des Textfelds fungiert, wenn das Feld leer ist.'
+          },
+          {
+            'Attribut': 'hintText',
+            'Erklärung':
+                'Zeigt einen Hinweistext an, der verschwindet, wenn der Benutzer mit der Eingabe beginnt.'
+          },
+          {
+            'Attribut': 'prefixIcon',
+            'Erklärung':
+                'Ein Widget, das vor dem Textfeld-Inhalt angezeigt wird (z. B. ein Icon).'
+          },
+          {
+            'Attribut': 'suffixIcon',
+            'Erklärung':
+                'Ein Widget, das nach dem Textfeld-Inhalt angezeigt wird.'
+          },
+          {
+            'Attribut': 'border',
+            'Erklärung': 'Definiert den Stil des Rahmens des Textfelds.'
+          },
+          {
+            'Attribut': 'errorText',
+            'Erklärung': 'Zeigt eine Fehlermeldung unter dem Textfeld an.'
+          },
+          {
+            'Attribut': 'filled',
+            'Erklärung':
+                'Bestimmt, ob das Textfeld einen Hintergrund hat oder transparent ist.'
+          },
+        ];
+        break;
+      default:
+        attributes = [];
+        break;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Widget Attribute Explorer'),
+      ),
+      body: Column(
+        children: [
+          // Dropdown to select widget
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: DropdownButton<String>(
+              hint: const Text('Wählen Sie ein Widget'),
+              value: selectedWidget,
+              onChanged: (String? newValue) {
+                setState(() {
+                  selectedWidget = newValue;
+                  setAttributes(newValue!);
+                });
+              },
+              items: <String>['Container', 'TextFormField']
+                  .map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+            ),
+          ),
+          // List of attributes for the selected widget
+          Expanded(
+            child: ListView.builder(
+              itemCount: attributes.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(attributes[index]['Attribut']!),
+                  onTap: () {
+                    _showExplanation(context, attributes[index]['Erklärung']!);
+                  },
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showExplanation(BuildContext context, String explanation) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Erklärung'),
+          content: Text(explanation),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Schließen'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
