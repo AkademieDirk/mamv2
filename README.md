@@ -25,4 +25,4 @@ Somit ist bis hierhin die Richtung dr App erkennbar.
 
  Es gibt neue Screenshots für Kalender / Abfall ABC und News Seite
 
- ![Preview_Screens](lib/config/Screenshots/Screenshot mamv2.png)
+ ![Preview_Screens](lib/config/Screenshots/Screenshot_mamv2.png)
