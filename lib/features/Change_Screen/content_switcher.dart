@@ -14,60 +14,59 @@ class ContentSwitcher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-      child: Container(
-          width: double.infinity,
-          decoration: background,
-          child: Column(children: [
-            verticalBigSpacing,
-            GestureDetector(
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const InteractiveFilteredCalendar()));
-                //InteractiveFilteredCalendar()));
-              },
-              child: const SwitcherContainer(
-                picturepath: "assets/icons/ContentSwitcher/Calendar.png",
-                text: "Kalender",
+        body: Container(
+            width: double.infinity,
+            decoration: background,
+            child: Column(children: [
+              verticalBigSpacing,
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>
+                          const InteractiveFilteredCalendar()));
+                  //InteractiveFilteredCalendar()));
+                },
+                child: const SwitcherContainer(
+                  picturepath: "assets/icons/ContentSwitcher/Calendar.png",
+                  text: "Kalender",
+                ),
               ),
-            ),
-            verticalSpacing,
-            GestureDetector(
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const NewsScreen()));
-              },
-              child: const SwitcherContainer(
-                  picturepath: "assets/icons/ContentSwitcher/News.png",
-                  text: "News"),
-            ),
-            verticalSpacing,
-            const SwitcherContainer(
-                picturepath: "assets/icons/ContentSwitcher/Phone.png",
-                text: "Service"),
-            verticalSpacing,
-            GestureDetector(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Muelltrennung()));
-              },
-              child: const SwitcherContainer(
-                  picturepath: "assets/icons/ContentSwitcher/Recycling.png",
-                  text: "Recycle"),
-            ),
-            verticalSpacing,
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ListViewTrashAbcNew()));
-              },
-              child: const SwitcherContainer(
-                  picturepath: "assets/icons/ContentSwitcher/AbfallABC.png",
-                  text: "Abfall ABC"),
-            )
-          ])),
-    ));
+              verticalSpacing,
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const NewsScreen()));
+                },
+                child: const SwitcherContainer(
+                    picturepath: "assets/icons/ContentSwitcher/News.png",
+                    text: "News"),
+              ),
+              verticalSpacing,
+              const SwitcherContainer(
+                  picturepath: "assets/icons/ContentSwitcher/Phone.png",
+                  text: "Service"),
+              verticalSpacing,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Muelltrennung()));
+                },
+                child: const SwitcherContainer(
+                    picturepath: "assets/icons/ContentSwitcher/Recycling.png",
+                    text: "Recycle"),
+              ),
+              verticalSpacing,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ListViewTrashAbcNew()));
+                },
+                child: const SwitcherContainer(
+                    picturepath: "assets/icons/ContentSwitcher/AbfallABC.png",
+                    text: "Abfall ABC"),
+              )
+            ])));
   }
 }
