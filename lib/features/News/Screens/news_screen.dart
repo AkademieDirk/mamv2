@@ -21,18 +21,20 @@ class _NewsScreenState extends State<NewsScreen> {
   String content = "Unbekannt";
   String urlToImage = "unbekannt";
   String url = "unbekannt";
-
+  String auswahl = "unbekannt";
+  TextEditingController auswahlfeld = TextEditingController();
   @override
   void initState() {
     super.initState();
     // Beim Start der Seite rufen wir diese Methode auf
     _randomNews();
+    auswahl = "Recklinghausen";
   }
 
   // Methode zum Abrufen der News
   Future<void> _randomNews() async {
     final Uri uri = Uri.https('newsapi.org', '/v2/everything', {
-      'q': 'Ruhrgebiet', // Suchbegriff für Nachrichten
+      'q': auswahl, // Suchbegriff für Nachrichten
       'apiKey': 'd54d923ea5fa477f95cb9b9d03ababf5',
     });
 
@@ -82,7 +84,14 @@ class _NewsScreenState extends State<NewsScreen> {
                     onPressed: () {
                       _randomNews();
                     },
-                    child: const Text("noch mehr News"))
+                    child: const Text("noch mehr News")),
+                TextFormField(
+                    controller: auswahlfeld,
+                    onChanged: (value) {
+                      setState(() {
+                        auswahl = value;
+                      });
+                    })
               ],
             )));
   }
