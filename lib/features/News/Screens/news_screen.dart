@@ -56,6 +56,7 @@ class _NewsScreenState extends State<NewsScreen> {
         urlToImage = article['urlToImage'] ?? "Kein Bild verfügbar";
         url = article["url"];
         randomNumber;
+        auswahlfeld.clear();
       });
     }
   }
@@ -80,18 +81,27 @@ class _NewsScreenState extends State<NewsScreen> {
                     url: url,
                   ),
                 ),
-                ElevatedButton(
-                    onPressed: () {
-                      _randomNews();
-                    },
-                    child: const Text("noch mehr News")),
-                TextFormField(
-                    controller: auswahlfeld,
-                    onChanged: (value) {
-                      setState(() {
-                        auswahl = value;
-                      });
-                    })
+                Container(
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(50)),
+                  height: 80,
+                  width: 300,
+                  child: TextFormField(
+                      controller: auswahlfeld,
+                      decoration: InputDecoration(
+                          border: const OutlineInputBorder(),
+                          filled: true,
+                          suffixIcon: GestureDetector(
+                              onTap: _randomNews,
+                              child: const Icon(Icons.search)),
+                          hintText: "Was interessiert Sie?",
+                          fillColor: Colors.white70),
+                      onChanged: (value) {
+                        setState(() {
+                          auswahl = value;
+                        });
+                      }),
+                )
               ],
             )));
   }
