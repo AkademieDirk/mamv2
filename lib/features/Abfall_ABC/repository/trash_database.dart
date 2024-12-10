@@ -1,6 +1,6 @@
 import 'package:csv/csv.dart';
 import 'package:flutter/services.dart';
-import 'package:mamv2/repositories/trash_repository.dart';
+import 'package:mamv2/features/abfall_abc/repository/trash_repository.dart';
 
 List<Map<String, String>> trashList = <Map<String, String>>[
   {

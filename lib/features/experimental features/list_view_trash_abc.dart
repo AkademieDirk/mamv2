@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mamv2/config/colors/colors.dart';
 
-import 'package:mamv2/repositories/trash_database.dart';
+import 'package:mamv2/features/abfall_abc/repository/trash_database.dart';
 import 'package:mamv2/shared/basic_app_bar.dart';
 
 class TrashListView extends StatefulWidget {

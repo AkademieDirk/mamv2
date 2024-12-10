@@ -1,5 +1,5 @@
 import 'package:mamv2/models/user.dart';
-import 'package:mamv2/repositories/user_repository.dart';
+import 'package:mamv2/features/login_registration/user_repository.dart';
 
 class UserDataBase implements UserRepository {
   final List<User> _users = [
