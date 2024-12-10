@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mamv2/config/themes/themes.dart';
-import 'package:mamv2/features/Abfall_ABC/widgets/classes/expanded_sized_box.dart';
+import 'package:mamv2/features/abfall_abc/widgets/classes/expanded_sized_box.dart';
 import 'package:mamv2/features/Kalender/calendar_card_widget.dart';
 import 'package:mamv2/shared/basic_app_bar.dart';
 

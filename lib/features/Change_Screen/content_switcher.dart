@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mamv2/config/themes/themes.dart';
-import 'package:mamv2/features/Abfall_ABC/screens/trash_list_view.dart';
-import 'package:mamv2/features/Abfall_ABC/widgets/switcher_container.dart';
+import 'package:mamv2/features/abfall_abc/screens/trash_list_view.dart';
+import 'package:mamv2/features/abfall_abc/widgets/switcher_container.dart';
 import 'package:mamv2/features/Kalender/csv_filtered.dart';
 import 'package:mamv2/features/Muelltrennung/Screens/waste_separation_screen.dart';
 import 'package:mamv2/features/News/Screens/news_screen.dart';

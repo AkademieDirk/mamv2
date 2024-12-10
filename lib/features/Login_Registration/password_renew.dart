@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mamv2/config/colors/colors.dart';
 
 import 'package:mamv2/config/themes/themes.dart';
-import 'package:mamv2/features/Abfall_ABC/widgets/classes/my_own_container.dart';
+import 'package:mamv2/features/abfall_abc/widgets/classes/my_own_container.dart';
 import 'package:mamv2/features/Login_Registration/login_screen.dart';
 
 class PasswordRenew extends StatelessWidget {

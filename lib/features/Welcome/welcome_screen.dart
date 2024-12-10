@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:mamv2/config/themes/themes.dart';
-import 'package:mamv2/features/Abfall_ABC/widgets/sized_elevation_button.dart';
+import 'package:mamv2/features/abfall_abc/widgets/sized_elevation_button.dart';
 import 'package:mamv2/features/Change_Screen/content_switcher.dart';
 import 'package:mamv2/features/Login_Registration/login_screen.dart';
 import 'package:mamv2/features/Login_Registration/registration_screen.dart';
