@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:mamv2/features/Login_Registration/registration_form.dart';
+import 'package:mamv2/features/login_registration/registration_form.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});

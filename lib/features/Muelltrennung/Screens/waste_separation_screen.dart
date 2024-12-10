@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mamv2/config/themes/themes.dart';
-import 'package:mamv2/features/Muelltrennung/black_can.dart';
-import 'package:mamv2/features/Muelltrennung/blue_can.dart';
-import 'package:mamv2/features/Muelltrennung/brown_can.dart';
-import 'package:mamv2/features/Muelltrennung/yellow_can.dart';
+import 'package:mamv2/features/muelltrennung/black_can.dart';
+import 'package:mamv2/features/muelltrennung/blue_can.dart';
+import 'package:mamv2/features/muelltrennung/brown_can.dart';
+import 'package:mamv2/features/muelltrennung/yellow_can.dart';
 import 'package:mamv2/features/News/garbage_paint_container.dart';
 import 'package:mamv2/shared/basic_app_bar.dart';
 

@@ -3,9 +3,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mamv2/config/colors/colors.dart';
 
 import 'package:mamv2/config/themes/themes.dart';
-import 'package:mamv2/features/Login_Registration/Logic/email_examination.dart';
-import 'package:mamv2/features/Login_Registration/password_renew.dart';
-import 'package:mamv2/features/Login_Registration/registration_screen.dart';
+import 'package:mamv2/features/login_registration/Logic/email_examination.dart';
+import 'package:mamv2/features/login_registration/password_renew.dart';
+import 'package:mamv2/features/login_registration/registration_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

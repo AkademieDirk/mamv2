@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mamv2/config/themes/themes.dart';
-import 'package:mamv2/features/Welcome/welcome_screen.dart';
+import 'package:mamv2/features/welcome/welcome_screen.dart';
 import 'package:mamv2/firebase_options.dart';
 
 void main() async {

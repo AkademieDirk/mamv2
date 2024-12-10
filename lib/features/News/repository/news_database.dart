@@ -1,5 +1,5 @@
 import 'package:mamv2/models/news.dart';
-import 'package:mamv2/repositories/news_repository.dart';
+import 'package:mamv2/features/news/repository/news_repository.dart';
 
 class NewsDatabase implements NewsRepository {
   final List<News> newsList = [
