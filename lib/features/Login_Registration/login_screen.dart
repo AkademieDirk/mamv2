@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mamv2/config/colors/colors.dart';
 
 import 'package:mamv2/config/themes/themes.dart';
-import 'package:mamv2/features/login_registration/Logic/email_examination.dart';
+
 import 'package:mamv2/features/login_registration/password_renew.dart';
 import 'package:mamv2/features/login_registration/registration_screen.dart';
 
@@ -99,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text(
                         textAlign: TextAlign.center,
-                        ausgabe!,
+                        ausgabe,
                         style:
                             const TextStyle(color: Colors.black, fontSize: 24),
                       ),
