@@ -38,6 +38,7 @@ class NewsContainer extends StatelessWidget {
           ),
         ),
         verticalSmallSpacing,
+        // hier wird mit launch UrLA die Nachricht über dne Link aufgerufen
         GestureDetector(
             onTap: () => NewsService.launchUrlA(url: url),
             child:
