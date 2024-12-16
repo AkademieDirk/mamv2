@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mamv2/config/colors/colors.dart';
-
 import 'package:mamv2/config/themes/themes.dart';
-
 import 'package:mamv2/features/login_registration/password_renew.dart';
-import 'package:mamv2/features/login_registration/registration_screen.dart';
+import 'package:mamv2/features/login_registration/repositorys/user_auth_repository.dart';
+import 'package:mamv2/features/login_registration/repositorys/user_repository.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -17,10 +16,9 @@ class LoginScreen extends StatefulWidget {
 // String? ausgabe = "";
 
 class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController mailadress = TextEditingController();
-  final TextEditingController password = TextEditingController();
-  final String mail = "info@edvprofis.com";
-  String errortext = "Test";
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,15 +37,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 width: 200,
                 height: 50,
                 child: TextFormField(
-                  style: const TextStyle(fontSize: 12),
-                  keyboardType: TextInputType.emailAddress,
-                  textInputAction: TextInputAction.next,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "Bitte Mailadresse eingeben",
-                  ),
-                  controller: mailadress,
-                ),
+                    style: const TextStyle(fontSize: 12),
+                    keyboardType: TextInputType.emailAddress,
+                    textInputAction: TextInputAction.next,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: "Bitte Mailadresse eingeben",
+                    ),
+                    controller: emailController),
               ),
             )),
             verticalSpacing,
@@ -58,19 +55,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 width: 200,
                 height: 50,
                 child: TextFormField(
-                  style: const TextStyle(fontSize: 12),
-                  keyboardType: TextInputType.visiblePassword,
-                  textInputAction: TextInputAction.next,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "Bitte Passwort eingeben",
-                  ),
-                  controller: password,
-                ),
+                    style: const TextStyle(fontSize: 12),
+                    keyboardType: TextInputType.visiblePassword,
+                    textInputAction: TextInputAction.next,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: "Bitte Passwort eingeben",
+                    ),
+                    controller: passwordController),
               ),
             )),
-            // Text("$ausgabe"),
-
             Row(
               children: [
                 const SizedBox(
@@ -91,108 +85,76 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(height: 100),
             Center(
               child: GestureDetector(
-                onTap: () {
+                  onTap: () {
+                    setState(() {
+                      Future<bool> loginFuture = context
+                          .read<UserAuthRepository>()
+                          .signUserIn(
+                              eMail: emailController.text,
+                              password: passwordController.text);
+                      // Snackbar anzeigen
+                      loginFuture.then(
+                        (value) {
+                          if (value == true) {
+                            // showSuccessSnackbar(context);
+                            const Text(" eingeloggt");
+                          }
+                        },
+                      );
+                    });
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        gradient: const LinearGradient(colors: [
+                          backgroundGradientStartColor,
+                          backgroundGradientEndColor,
+                        ]),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                        border: Border.all(color: buttonBorder, width: 1.0)),
+                    height: 50,
+                    width: 300,
+                    child: Text(
+                      "Login",
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                  )),
+            ),
+            ElevatedButton(
+                onPressed: () {
                   setState(() {
-                    String? ausgabe = emailValidator(mailadress.text);
+                    Future<bool> loginFuture = context
+                        .read<UserAuthRepository>()
+                        .signUserIn(
+                            eMail: emailController.text,
+                            password: passwordController.text);
                     // Snackbar anzeigen
-
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(
-                        textAlign: TextAlign.center,
-                        ausgabe,
-                        style:
-                            const TextStyle(color: Colors.black, fontSize: 24),
-                      ),
-                      backgroundColor: Colors.red,
-                    ));
+                    loginFuture.then(
+                      (value) {
+                        if (value == true) {
+                          // showSuccessSnackbar(context);
+                          const Text(" eingeloggt");
+                        }
+                      },
+                    );
                   });
                 },
-                child: Container(
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      gradient: const LinearGradient(colors: [
-                        backgroundGradientStartColor,
-                        backgroundGradientEndColor,
-                      ]),
-                      borderRadius: const BorderRadius.all(Radius.circular(10)),
-                      border: Border.all(color: buttonBorder, width: 1.0)),
-                  height: 50,
-                  width: 300,
-                  child: Text(
-                    "Login",
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 100),
-            const Text(
-              "or Login with",
-              textAlign: TextAlign.center,
-            ),
-            verticalSpacing,
-            Row(children: [
-              const Expanded(child: SizedBox()),
-              Container(
-                  decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
-                  height: 50,
-                  width: 100,
-                  child: const Center(child: FaIcon(FontAwesomeIcons.google))),
-              const SizedBox(
-                width: 20,
-              ),
-              Container(
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                height: 50,
-                width: 100,
-                child: const Icon(
-                  Icons.facebook,
-                  size: 40,
-                ),
-              ),
-              const SizedBox(
-                width: 20,
-              ),
-              Container(
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                height: 50,
-                width: 100,
-                child: const Icon(
-                  Icons.apple,
-                  size: 40,
-                ),
-              ),
-              const Expanded(child: SizedBox())
-            ]),
-            verticalBigSpacing,
-            Row(
-              children: [
-                const Expanded(child: SizedBox()),
-                Text("Du hast noch keinen Account? ",
-                    style: Theme.of(context).textTheme.bodySmall),
-                GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const RegistrationScreen()));
-                    },
-                    child: Text(
-                      " Register Now",
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: darkgreenText,
-                          ),
-                    )),
-                const Expanded(child: SizedBox()),
-              ],
-            ),
+                child: const Text(" Test")),
           ],
         ),
       ),
+    ));
+  }
+
+  void showSuccessSnackbar(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      content: Text(
+        textAlign: TextAlign.center,
+        "Test",
+        style: TextStyle(color: Colors.black, fontSize: 24),
+      ),
+      backgroundColor: Colors.red,
     ));
   }
 }

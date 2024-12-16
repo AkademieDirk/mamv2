@@ -8,8 +8,8 @@ abstract class UserRepository {
   Future<bool> addUser(String newUserName, String newPassword);
   Future<void> editUser(AppUser user);
 
-  Future<bool> login({
-    required String userName,
+  Future<bool> signUserIn({
+    required String eMail,
     required String password,
   });
   Future<void> logout();
