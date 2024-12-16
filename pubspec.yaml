@@ -17,6 +17,7 @@ dependencies:
   font_awesome_flutter: ^10.8.0
   glass_container: ^0.0.4
   http: ^1.2.2
+  provider: ^6.1.2
   shared_preferences: ^2.3.3
   syncfusion_flutter_calendar: ^27.2.4
   url_launcher: ^6.3.1

@@ -3,7 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:mamv2/config/themes/themes.dart';
-import 'package:mamv2/features/News/news_container.dart';
+
+import 'package:mamv2/features/news/shared/news_container.dart';
 import 'package:mamv2/shared/basic_app_bar.dart';
 
 class NewsScreen extends StatefulWidget {

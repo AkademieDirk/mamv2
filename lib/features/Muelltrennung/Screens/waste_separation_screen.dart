@@ -4,7 +4,8 @@ import 'package:mamv2/features/muelltrennung/black_can.dart';
 import 'package:mamv2/features/muelltrennung/blue_can.dart';
 import 'package:mamv2/features/muelltrennung/brown_can.dart';
 import 'package:mamv2/features/muelltrennung/yellow_can.dart';
-import 'package:mamv2/features/News/garbage_paint_container.dart';
+import 'package:mamv2/features/news/shared/garbage_paint_container.dart';
+
 import 'package:mamv2/shared/basic_app_bar.dart';
 
 class Muelltrennung extends StatelessWidget {
