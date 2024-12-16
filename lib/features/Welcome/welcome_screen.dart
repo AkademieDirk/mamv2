@@ -11,7 +11,7 @@ class WelcomeScreen extends StatelessWidget {
   WelcomeScreen({
     super.key,
   });
-  //final DatabaseRepository repository = MockDatabase();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

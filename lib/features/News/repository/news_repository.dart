@@ -1,7 +1,7 @@
 abstract class NewsRepository {
-  Future<void> getNews() async {}
+  Future<void> getNews();
 
-  Future<void> addNews() {
-    throw UnimplementedError();
-  }
+  Future<void> addNews();
+
+  Future<void> launchUrlA();
 }

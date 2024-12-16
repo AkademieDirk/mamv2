@@ -2,9 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mamv2/config/themes/themes.dart';
 import 'package:mamv2/features/login_registration/user_auth_repository.dart';
-import 'package:mamv2/features/login_registration/user_database.dart';
+
 import 'package:mamv2/features/login_registration/user_repository.dart';
 import 'package:mamv2/features/news/repository/news_database.dart';
+import 'package:mamv2/features/news/repository/news_repository.dart';
 
 import 'package:mamv2/features/welcome/welcome_screen.dart';
 import 'package:mamv2/firebase_options.dart';
@@ -19,10 +20,10 @@ void main() async {
   );
   runApp(MultiProvider(providers: [
     Provider<DatabaseRepository>(create: (_) => MockDatabase()),
-    Provider<NewsDatabase>(create: (_) => NewsDatabase()),
+    Provider<NewsRepository>(create: (_) => NewsDatabase()),
     Provider<UserRepository>(
       create: (_) => UserAuthRepository(),
-    )
+    ),
   ], child: const MainApp()));
 }
 

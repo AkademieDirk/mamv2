@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mamv2/config/themes/themes.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:mamv2/features/news/logic/service.dart';
 
 class NewsContainer extends StatelessWidget {
   const NewsContainer({
@@ -14,14 +14,6 @@ class NewsContainer extends StatelessWidget {
   final String content;
   final String urlToImage;
   final String url;
-
-  // Anmedelnde mit Apple
-  Future<void> _launchUrlA() async {
-    final Uri urla = Uri.parse(url);
-    if (!await launchUrl(urla)) {
-      throw Exception("Seite konnte nicht geladen werden $urla");
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +39,7 @@ class NewsContainer extends StatelessWidget {
         ),
         verticalSmallSpacing,
         GestureDetector(
-            onTap: () => _launchUrlA(),
+            onTap: () => NewsService.launchUrlA(url: url),
             child:
                 const Center(child: Text("Hier geht zum kompletten Artikel"))),
         verticalMediumSpacing,
