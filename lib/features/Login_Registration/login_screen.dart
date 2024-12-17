@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, curly_braces_in_flow_control_structures
 
 import 'package:flutter/material.dart';
 // ignore: unused_import
@@ -106,8 +106,13 @@ class _LoginScreenState extends State<LoginScreen> {
                               password: passwordController.text,
                             );
 // Überprüfen ob eingeloggt
-
-                    if (isLoggedIn) {
+                    if (emailController.text.isEmpty == true ||
+                        passwordController.text.isEmpty == true) {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("Bitte beide Felder füllen"),
+                        backgroundColor: Colors.red,
+                      ));
+                    } else if (isLoggedIn) {
                       ScaffoldMessenger.of(context)
                           .showSnackBar((const SnackBar(
                         content: Text(" Erfolgreich eingeloggt"),
