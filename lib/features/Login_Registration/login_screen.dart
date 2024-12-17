@@ -1,9 +1,14 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:mamv2/config/colors/colors.dart';
 import 'package:mamv2/config/themes/themes.dart';
+import 'package:mamv2/features/change_screen/content_switcher.dart';
 import 'package:mamv2/features/login_registration/password_renew.dart';
-import 'package:mamv2/features/login_registration/repositorys/user_auth_repository.dart';
+
 import 'package:mamv2/features/login_registration/repositorys/user_repository.dart';
+
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -12,8 +17,6 @@ class LoginScreen extends StatefulWidget {
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
-
-// String? ausgabe = "";
 
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
@@ -41,6 +44,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.next,
                     decoration: const InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white,
                       border: OutlineInputBorder(),
                       hintText: "Bitte Mailadresse eingeben",
                     ),
@@ -59,6 +64,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     keyboardType: TextInputType.visiblePassword,
                     textInputAction: TextInputAction.next,
                     decoration: const InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white,
                       border: OutlineInputBorder(),
                       hintText: "Bitte Passwort eingeben",
                     ),
@@ -82,65 +89,49 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ],
             ),
-            const SizedBox(height: 100),
-            Center(
-              child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      Future<bool> loginFuture = context
-                          .read<UserAuthRepository>()
-                          .signUserIn(
-                              eMail: emailController.text,
-                              password: passwordController.text);
-                      // Snackbar anzeigen
-                      loginFuture.then(
-                        (value) {
-                          if (value == true) {
-                            // showSuccessSnackbar(context);
-                            const Text(" eingeloggt");
-                          }
-                        },
-                      );
-                    });
-                  },
-                  child: Container(
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        gradient: const LinearGradient(colors: [
-                          backgroundGradientStartColor,
-                          backgroundGradientEndColor,
-                        ]),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10)),
-                        border: Border.all(color: buttonBorder, width: 1.0)),
-                    height: 50,
-                    width: 300,
-                    child: Text(
-                      "Login",
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                  )),
+            const SizedBox(
+              height: 100,
+              width: 100,
             ),
             ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    Future<bool> loginFuture = context
-                        .read<UserAuthRepository>()
-                        .signUserIn(
-                            eMail: emailController.text,
-                            password: passwordController.text);
-                    // Snackbar anzeigen
-                    loginFuture.then(
-                      (value) {
-                        if (value == true) {
-                          // showSuccessSnackbar(context);
-                          const Text(" eingeloggt");
-                        }
-                      },
-                    );
-                  });
+                style: ButtonStyle(
+                  minimumSize: WidgetStateProperty.all(const Size(300, 50)),
+                ),
+                onPressed: () async {
+                  // hier wird versucht den User einzuloggen
+                  try {
+                    bool isLoggedIn =
+                        await context.read<UserRepository>().signUserIn(
+                              eMail: emailController.text,
+                              password: passwordController.text,
+                            );
+// Überprüfen ob eingeloggt
+
+                    if (isLoggedIn) {
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar((const SnackBar(
+                        content: Text(" Erfolgreich eingeloggt"),
+                        backgroundColor: Colors.green,
+                      )));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ContentSwitcher()),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("Ein Fehler ist aufgetreten"),
+                        backgroundColor: Colors.red,
+                      ));
+                    }
+                  } catch (e) {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text("Dieser Fehler ist aufgetreten : $e"),
+                      backgroundColor: Colors.red,
+                    ));
+                  }
                 },
-                child: const Text(" Test")),
+                child: const Text("Login"))
           ],
         ),
       ),
@@ -151,7 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       content: Text(
         textAlign: TextAlign.center,
-        "Test",
+        "User  ist eingeloggt",
         style: TextStyle(color: Colors.black, fontSize: 24),
       ),
       backgroundColor: Colors.red,

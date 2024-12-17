@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mamv2/config/themes/themes.dart';
-import 'package:mamv2/features/login_registration/auth_Status_page.dart';
+
 import 'package:mamv2/features/login_registration/login_screen.dart';
 import 'package:mamv2/features/login_registration/repositorys/user_auth_repository.dart';
 
