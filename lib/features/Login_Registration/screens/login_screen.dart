@@ -105,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               eMail: emailController.text,
                               password: passwordController.text,
                             );
-// Überprüfen ob eingeloggt
+// Überprüfen ob Daten eingegeben
                     if (emailController.text.isEmpty == true ||
                         passwordController.text.isEmpty == true) {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -125,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       );
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text("Ein Fehler ist aufgetreten"),
+                        content: Text("Ein Fehler ist aufgetreten "),
                         backgroundColor: Colors.red,
                       ));
                     }

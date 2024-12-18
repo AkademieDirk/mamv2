@@ -23,14 +23,14 @@ class UserAuthRepository extends UserRepository {
   }
   // @override
   // Future<bool> signUserIn({
-  //   required String eMail,
+  //    required String eMail,
   //   required String password,
   // }) async {
-  //   await FirebaseAuth.instance
-  //       .signInWithEmailAndPassword(email: eMail, password: password);
+  //  await FirebaseAuth.instance
+  //        .signInWithEmailAndPassword(email: eMail, password: password);
 
-  //   return true;
-  // }
+  //    return true;
+  //  }
 
   @override
   Future<bool> addUser(String newUserName, String newPassword) {

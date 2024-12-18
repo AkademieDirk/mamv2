@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:mamv2/config/themes/themes.dart';
 import 'package:mamv2/features/abfall_abc/widgets/sized_elevation_button.dart';
 import 'package:mamv2/features/change_screen/content_switcher.dart';
-import 'package:mamv2/features/login_registration/login_screen.dart';
-import 'package:mamv2/features/login_registration/registration_screen.dart';
+import 'package:mamv2/features/login_registration/screens/login_screen.dart';
+import 'package:mamv2/features/login_registration/screens/registration_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   WelcomeScreen({

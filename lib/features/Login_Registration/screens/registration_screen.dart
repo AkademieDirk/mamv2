@@ -6,7 +6,7 @@ import 'package:mamv2/config/colors/colors.dart';
 import 'package:mamv2/config/themes/themes.dart';
 import 'package:mamv2/features/abfall_abc/widgets/classes/expanded_sized_box.dart';
 import 'package:mamv2/features/abfall_abc/widgets/classes/my_own_container.dart';
-import 'package:mamv2/features/login_registration/login_screen.dart';
+import 'package:mamv2/features/login_registration/screens/login_screen.dart';
 
 class RegistrationScreen extends StatelessWidget {
   const RegistrationScreen({super.key});

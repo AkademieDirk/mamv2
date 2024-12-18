@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mamv2/features/change_screen/content_switcher.dart';
-import 'package:mamv2/features/login_registration/login_screen.dart';
+import 'package:mamv2/features/login_registration/screens/login_screen.dart';
 
 class AuthStatusPage extends StatelessWidget {
   const AuthStatusPage({super.key});
@@ -14,9 +14,9 @@ class AuthStatusPage extends StatelessWidget {
       builder: (context, snapshot) {
 // User ist eingeloggt
         if (snapshot.hasData) {
-          return ContentSwitcher();
+          return const ContentSwitcher();
         } else {
-          return LoginScreen();
+          return const LoginScreen();
         }
       },
 
