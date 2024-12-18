@@ -5,6 +5,8 @@ import 'package:mamv2/features/abfall_abc/widgets/switcher_container.dart';
 import 'package:mamv2/features/Kalender/csv_filtered.dart';
 import 'package:mamv2/features/Muelltrennung/Screens/waste_separation_screen.dart';
 import 'package:mamv2/features/News/Screens/news_screen.dart';
+import 'package:mamv2/features/login_registration/repositorys/user_auth_repository.dart';
+import 'package:provider/provider.dart';
 
 class ContentSwitcher extends StatelessWidget {
   const ContentSwitcher({
@@ -14,6 +16,9 @@ class ContentSwitcher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        floatingActionButton: FloatingActionButton(onPressed: () {
+          context.read<UserAuthRepository>().logoutUser();
+        }),
         body: Container(
             width: double.infinity,
             decoration: background,

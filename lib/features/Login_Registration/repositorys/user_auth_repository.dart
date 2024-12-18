@@ -6,6 +6,7 @@ import 'package:mamv2/models/user.dart';
 
 class UserAuthRepository extends UserRepository {
   final authInstance = FirebaseAuth.instance;
+  Stream<User?> get onAuthStateChanged => authInstance.authStateChanges();
 
   @override
   Future<bool> signUserIn(
@@ -21,16 +22,15 @@ class UserAuthRepository extends UserRepository {
       return false;
     }
   }
-  // @override
-  // Future<bool> signUserIn({
-  //    required String eMail,
-  //   required String password,
-  // }) async {
-  //  await FirebaseAuth.instance
-  //        .signInWithEmailAndPassword(email: eMail, password: password);
 
-  //    return true;
-  //  }
+  @override
+  Future<void> logoutUser() async {
+    try {
+      await authInstance.signOut();
+    } catch (e) {
+      log("$e");
+    }
+  }
 
   @override
   Future<bool> addUser(String newUserName, String newPassword) {
@@ -54,14 +54,5 @@ class UserAuthRepository extends UserRepository {
   Future<AppUser?> getCurrentUser() {
     // TODO: implement getCurrentUser
     throw UnimplementedError();
-  }
-
-  @override
-  Future<void> logoutUser() async {
-    try {
-      await authInstance.signOut();
-    } catch (e) {
-      log("$e");
-    }
   }
 }

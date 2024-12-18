@@ -6,8 +6,7 @@ import 'package:mamv2/config/colors/colors.dart';
 import 'package:mamv2/config/themes/themes.dart';
 import 'package:mamv2/features/change_screen/content_switcher.dart';
 import 'package:mamv2/features/login_registration/password_renew.dart';
-
-import 'package:mamv2/features/login_registration/repositorys/user_repository.dart';
+import 'package:mamv2/features/login_registration/repositorys/user_auth_repository.dart';
 
 import 'package:provider/provider.dart';
 
@@ -101,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   // hier wird versucht den User einzuloggen
                   try {
                     bool isLoggedIn =
-                        await context.read<UserRepository>().signUserIn(
+                        await context.read<UserAuthRepository>().signUserIn(
                               eMail: emailController.text,
                               password: passwordController.text,
                             );

@@ -1,15 +1,16 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
 import 'package:mamv2/config/themes/themes.dart';
 
-import 'package:mamv2/features/login_registration/screens/login_screen.dart';
 import 'package:mamv2/features/login_registration/repositorys/user_auth_repository.dart';
-
-import 'package:mamv2/features/login_registration/repositorys/user_repository.dart';
 
 import 'package:mamv2/firebase_options.dart';
 import 'package:mamv2/repositories/database_repository.dart';
 import 'package:mamv2/repositories/mock_database.dart';
+import 'package:mamv2/start_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -19,7 +20,7 @@ void main() async {
   );
   runApp(MultiProvider(providers: [
     Provider<DatabaseRepository>(create: (_) => MockDatabase()),
-    Provider<UserRepository>(
+    Provider<UserAuthRepository>(
       create: (_) => UserAuthRepository(),
     ),
   ], child: const MainApp()));
@@ -34,8 +35,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: mamTheme,
-      home: const Scaffold(
-        body: LoginScreen(),
+      home: Scaffold(
+        body: const StartScreen(),
       ),
     );
   }
