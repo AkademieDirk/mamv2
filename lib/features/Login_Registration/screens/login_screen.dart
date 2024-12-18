@@ -144,6 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void showSuccessSnackbar(BuildContext context) {
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      duration: Duration(seconds: 2),
       content: Text(
         textAlign: TextAlign.center,
         "User  ist eingeloggt",

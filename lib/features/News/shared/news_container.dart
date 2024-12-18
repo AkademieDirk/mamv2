@@ -24,7 +24,7 @@ class NewsContainer extends StatelessWidget {
           child: Center(
               child: Text(
             title,
-            style: Theme.of(context).textTheme.displayMedium,
+            style: Theme.of(context).textTheme.displaySmall,
           )),
         ),
         verticalSmallSpacing,

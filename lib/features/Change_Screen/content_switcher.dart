@@ -6,6 +6,7 @@ import 'package:mamv2/features/Kalender/csv_filtered.dart';
 import 'package:mamv2/features/Muelltrennung/Screens/waste_separation_screen.dart';
 import 'package:mamv2/features/News/Screens/news_screen.dart';
 import 'package:mamv2/features/login_registration/repositorys/user_auth_repository.dart';
+import 'package:mamv2/features/login_registration/screens/login_screen.dart';
 import 'package:provider/provider.dart';
 
 class ContentSwitcher extends StatelessWidget {
@@ -16,9 +17,19 @@ class ContentSwitcher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: FloatingActionButton(onPressed: () {
-          context.read<UserAuthRepository>().logoutUser();
-        }),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            context.read<UserAuthRepository>().logoutUser();
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const LoginScreen()));
+            ScaffoldMessenger.of(context).showSnackBar((const SnackBar(
+              content: Text(" Erfolgreich ausgeloggt"),
+              duration: Duration(seconds: 1),
+              backgroundColor: Colors.green,
+            )));
+          },
+          child: const Icon(Icons.logout),
+        ),
         body: Container(
             width: double.infinity,
             decoration: background,

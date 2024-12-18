@@ -72,38 +72,40 @@ class _NewsScreenState extends State<NewsScreen> {
         body: Container(
             width: double.infinity,
             decoration: background,
-            child: Column(
-              children: [
-                Center(
-                  child: NewsContainer(
-                    title: title,
-                    urlToImage: urlToImage,
-                    content: content,
-                    url: url,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Center(
+                    child: NewsContainer(
+                      title: title,
+                      urlToImage: urlToImage,
+                      content: content,
+                      url: url,
+                    ),
                   ),
-                ),
-                Container(
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(50)),
-                  height: 80,
-                  width: 300,
-                  child: TextFormField(
-                      controller: auswahlfeld,
-                      decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
-                          filled: true,
-                          suffixIcon: GestureDetector(
-                              onTap: _randomNews,
-                              child: const Icon(Icons.search)),
-                          hintText: "Was interessiert Sie?",
-                          fillColor: Colors.white70),
-                      onChanged: (value) {
-                        setState(() {
-                          auswahl = value;
-                        });
-                      }),
-                )
-              ],
+                  Container(
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(50)),
+                    height: 80,
+                    width: 300,
+                    child: TextFormField(
+                        controller: auswahlfeld,
+                        decoration: InputDecoration(
+                            border: const OutlineInputBorder(),
+                            filled: true,
+                            suffixIcon: GestureDetector(
+                                onTap: _randomNews,
+                                child: const Icon(Icons.search)),
+                            hintText: "Was interessiert Sie?",
+                            fillColor: Colors.white70),
+                        onChanged: (value) {
+                          setState(() {
+                            auswahl = value;
+                          });
+                        }),
+                  )
+                ],
+              ),
             )));
   }
 }
