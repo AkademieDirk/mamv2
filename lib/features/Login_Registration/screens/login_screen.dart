@@ -114,6 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     } else if (isLoggedIn) {
                       ScaffoldMessenger.of(context)
                           .showSnackBar((const SnackBar(
+                        duration: Duration(seconds: 1),
                         content: Text(" Erfolgreich eingeloggt"),
                         backgroundColor: Colors.green,
                       )));
