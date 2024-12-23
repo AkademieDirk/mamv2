@@ -59,6 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 width: 200,
                 height: 50,
                 child: TextFormField(
+                    obscureText: true,
                     style: const TextStyle(fontSize: 12),
                     keyboardType: TextInputType.visiblePassword,
                     textInputAction: TextInputAction.next,
@@ -136,7 +137,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     ));
                   }
                 },
-                child: const Text("Login"))
+                child: const Text("Login")),
+            const SizedBox(
+              height: 50,
+            ),
           ],
         ),
       ),
