@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:mamv2/features/news/logic/service.dart';
 
@@ -46,28 +47,37 @@ class NewsContainer extends StatelessWidget {
               "Hier geht zum kompletten Artikel",
               style: TextStyle(fontWeight: FontWeight.bold),
             ))),
-
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            //   padding: const EdgeInsets.all(16.0),
-
-            child: Image.network(
-              urlToImage,
-              loadingBuilder: (BuildContext context, Widget child,
-                  ImageChunkEvent? loadingProgress) {
-                if (loadingProgress == null) {
-                  return child;
-                } else {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              },
-            ),
-          ),
+        CachedNetworkImage(
+          imageUrl: urlToImage, // Bild-URL
+          placeholder: (context, urlToImage) =>
+              const CircularProgressIndicator(), // Platzhalter während des Ladens
+          errorWidget: (context, url, error) => const Icon(Icons
+              .error), // Fehlerbild, wenn das Bild nicht geladen werden kann
+          fit: BoxFit.cover, // Bildskalierung
+          width: 300,
+          height: 200,
         ),
+        // Padding(
+        //   padding: const EdgeInsets.all(16.0),
+        //   child: ClipRRect(
+        //     borderRadius: BorderRadius.circular(12),
+        //     //   padding: const EdgeInsets.all(16.0),
+
+        //     child: Image.network(
+        //       urlToImage,
+        //       loadingBuilder: (BuildContext context, Widget child,
+        //           ImageChunkEvent? loadingProgress) {
+        //         if (loadingProgress == null) {
+        //           return child;
+        //         } else {
+        //           return const Center(
+        //             child: CircularProgressIndicator(),
+        //           );
+        //         }
+        //       },
+        //     ),
+        //   ),
+        // ),
         const SizedBox(
           height: 20,
         )
