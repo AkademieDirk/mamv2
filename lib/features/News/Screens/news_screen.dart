@@ -66,7 +66,7 @@ class _NewsScreenState extends State<NewsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: const BasicAppBar(
-            title: "Aktuelle Meldungen",
+            title: "Aktuelles",
             canColorImagePath: "assets/images/News/news.jpg",
             textcolor: Colors.black),
         body: Container(

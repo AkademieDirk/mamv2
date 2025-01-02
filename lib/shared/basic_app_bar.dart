@@ -20,7 +20,7 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(title!,
           style: Theme.of(context)
               .textTheme
-              .displayMedium
+              .displaySmall
               ?.copyWith(color: textcolor)),
 
       backgroundColor: appbarcolor,
