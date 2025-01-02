@@ -8,6 +8,7 @@ environment:
   sdk: ^3.5.2
 
 dependencies:
+  cached_network_image: ^3.4.1
   csv: ^6.0.0
   firebase_auth: ^5.3.4
   firebase_core: ^3.8.1
