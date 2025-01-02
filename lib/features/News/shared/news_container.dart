@@ -41,15 +41,26 @@ class NewsContainer extends StatelessWidget {
         // hier wird mit launch UrLA die Nachricht über dne Link aufgerufen
         GestureDetector(
             onTap: () => NewsService.launchUrlA(url: url),
-            child:
-                const Center(child: Text("Hier geht zum kompletten Artikel"))),
+            child: const Center(
+                child: Text(
+              "Hier geht zum kompletten Artikel",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ))),
 
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Image.network(
-            urlToImage,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            //   padding: const EdgeInsets.all(16.0),
+
+            child: Image.network(
+              urlToImage,
+            ),
           ),
         ),
+        const SizedBox(
+          height: 20,
+        )
       ],
     );
   }

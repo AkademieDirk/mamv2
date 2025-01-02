@@ -22,64 +22,62 @@ class Muelltrennung extends StatelessWidget {
               "assets/images/TrashCanColor/Tonne_gruen_comic.png",
           textcolor: Colors.white,
         ),
-        body: SingleChildScrollView(
-          child: Container(
-              width: double.infinity,
-              decoration: background,
-              child: Column(children: [
-                verticalSmallSpacing,
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const YellowCanInformation(),
-                        ));
-                  },
-                  child: const GarbageCanPaintContainer(
-                      text: "Gelbe Tonne",
-                      trashcolorimagepath:
-                          "assets/images/TrashCanColor/gelbe_Tonne_transparent.png"),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const BlueCanInformation(),
-                        ));
-                  },
-                  child: const GarbageCanPaintContainer(
+        body: Container(
+            width: double.infinity,
+            decoration: background,
+            child: Column(children: [
+              verticalSmallSpacing,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const YellowCanInformation(),
+                      ));
+                },
+                child: const GarbageCanPaintContainer(
+                    text: "Gelbe Tonne",
                     trashcolorimagepath:
-                        "assets/images/TrashCanColor/blaue_Tonne_transparent.png",
-                    text: "Blaue Tonne",
-                  ),
+                        "assets/images/TrashCanColor/gelbe_Tonne_transparent.png"),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const BlueCanInformation(),
+                      ));
+                },
+                child: const GarbageCanPaintContainer(
+                  trashcolorimagepath:
+                      "assets/images/TrashCanColor/blaue_Tonne_transparent.png",
+                  text: "Blaue Tonne",
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const BrownCanInformation(),
-                    ));
-                  },
-                  child: const GarbageCanPaintContainer(
-                    trashcolorimagepath:
-                        "assets/images/TrashCanColor/braune_Tonne_transparent.png",
-                    text: "braune Tonne",
-                  ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const BrownCanInformation(),
+                  ));
+                },
+                child: const GarbageCanPaintContainer(
+                  trashcolorimagepath:
+                      "assets/images/TrashCanColor/braune_Tonne_transparent.png",
+                  text: "braune Tonne",
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const BlackCanInformation(),
-                    ));
-                  },
-                  child: const GarbageCanPaintContainer(
-                    trashcolorimagepath:
-                        "assets/images/TrashCanColor/schwarz_transparent.png",
-                    text: "Restmüll Tonne",
-                  ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const BlackCanInformation(),
+                  ));
+                },
+                child: const GarbageCanPaintContainer(
+                  trashcolorimagepath:
+                      "assets/images/TrashCanColor/schwarz_transparent.png",
+                  text: "Restmüll Tonne",
                 ),
-              ])),
-        ));
+              ),
+            ])));
   }
 }

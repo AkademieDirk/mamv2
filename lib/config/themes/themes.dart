@@ -8,16 +8,11 @@ ThemeData mamTheme = ThemeData(
         bodySmall: TextStyle(fontSize: smallTextSize),
         bodyMedium: TextStyle(fontSize: mediumTextSize),
         bodyLarge: TextStyle(fontSize: bigTextSize),
-        displaySmall: TextStyle(
-          fontSize: 16,
-        ),
+        displaySmall: TextStyle(fontSize: 16),
         displayMedium: TextStyle(fontSize: 20),
-        headlineSmall:
-            TextStyle(fontSize: smallTextSize, fontWeight: FontWeight.bold),
-        headlineMedium:
-            TextStyle(fontSize: mediumTextSize, fontWeight: FontWeight.bold),
-        headlineLarge:
-            TextStyle(fontSize: bigTextSize, fontWeight: FontWeight.w500)));
+        headlineSmall: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        headlineMedium: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        headlineLarge: TextStyle(fontSize: 28, fontWeight: FontWeight.w500)));
 
 Icon closebutton = const Icon(Icons.close_rounded);
 const verticalSmallSpacing = SizedBox(
