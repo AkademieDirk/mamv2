@@ -25,9 +25,19 @@ class ServiceListScreen extends StatelessWidget {
             itemCount: serviceList.length,
             itemBuilder: (context, index) {
               final service = serviceList[index];
-              return ListTile(
-                title: Text(service['service']!),
-                subtitle: Text(service['phone']!),
+              final listbackgroundColor = getRandomColor();
+              return Container(
+                color: listbackgroundColor,
+                child: ListTile(
+                  title: Text(
+                    service['service']!,
+                    style: const TextStyle(color: Colors.black),
+                  ),
+                  subtitle: Text(
+                    service['phone']!,
+                    style: const TextStyle(color: Colors.black),
+                  ),
+                ),
               );
             },
           ),

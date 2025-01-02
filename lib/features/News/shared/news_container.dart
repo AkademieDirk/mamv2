@@ -55,6 +55,16 @@ class NewsContainer extends StatelessWidget {
 
             child: Image.network(
               urlToImage,
+              loadingBuilder: (BuildContext context, Widget child,
+                  ImageChunkEvent? loadingProgress) {
+                if (loadingProgress == null) {
+                  return child;
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
             ),
           ),
         ),

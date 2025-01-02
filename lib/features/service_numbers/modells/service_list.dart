@@ -1,3 +1,6 @@
+import 'dart:math';
+import 'dart:ui';
+
 class ServiceList {
   List<Map<String, String>> getServiceList() {
     return [
@@ -16,4 +19,14 @@ class ServiceList {
       },
     ];
   }
+}
+
+Color getRandomColor() {
+  final random = Random();
+
+  int red = random.nextInt(81) + 100; // R-Wert (0-255)
+  int green = random.nextInt(81) + 100; // G-Wert (0-255)
+  int blue = 0;
+  // Alpha-Wert hiermit wird gesagt vollkommen undurchsichtig
+  return Color.fromRGBO(red, green, blue, 1.0);
 }
