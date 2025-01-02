@@ -71,6 +71,7 @@ class _NewsScreenState extends State<NewsScreen> {
             textcolor: Colors.black),
         body: Container(
             width: double.infinity,
+            height: double.infinity,
             decoration: background,
             child: SingleChildScrollView(
               child: Column(
