@@ -7,6 +7,7 @@ import 'package:mamv2/features/Muelltrennung/Screens/waste_separation_screen.dar
 import 'package:mamv2/features/News/Screens/news_screen.dart';
 import 'package:mamv2/features/login_registration/repositorys/user_auth_repository.dart';
 import 'package:mamv2/features/login_registration/screens/login_screen.dart';
+import 'package:mamv2/features/service_numbers/screens/service_list_screen.dart';
 import 'package:provider/provider.dart';
 
 class ContentSwitcher extends StatelessWidget {
@@ -58,9 +59,15 @@ class ContentSwitcher extends StatelessWidget {
                     text: "News"),
               ),
               verticalSpacing,
-              const SwitcherContainer(
-                  picturepath: "assets/icons/ContentSwitcher/Phone.png",
-                  text: "Service"),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const ServiceListScreen()));
+                },
+                child: const SwitcherContainer(
+                    picturepath: "assets/icons/ContentSwitcher/Phone.png",
+                    text: "Service"),
+              ),
               verticalSpacing,
               GestureDetector(
                 onTap: () {
