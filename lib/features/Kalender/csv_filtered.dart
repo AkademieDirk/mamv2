@@ -11,8 +11,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //! wie bekomme ich hier die matrial App raus
     return const MaterialApp(
-      debugShowCheckedModeBanner: false,
       home: InteractiveFilteredCalendar(),
     );
   }
@@ -98,27 +98,24 @@ class InteractiveFilteredCalendarState
                     ? const Center(child: CircularProgressIndicator())
                     : InteractiveViewer(
                         constrained: false,
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: DataTable(
-                            columnSpacing: 20,
-                            columns: const [
-                              DataColumn(label: Text('Straße')),
-                              DataColumn(label: Text('Restabfall')),
-                              DataColumn(label: Text('Bio')),
-                              DataColumn(label: Text('Wertstoff')),
-                              DataColumn(label: Text('Papier')),
-                            ],
-                            rows: _filteredData.map((row) {
-                              return DataRow(cells: [
-                                DataCell(Text(row[0].toString())), // Straße
-                                DataCell(Text(row[1].toString())), // Restabfall
-                                DataCell(Text(row[2].toString())), // Bio
-                                DataCell(Text(row[3].toString())), // Wertstoff
-                                DataCell(Text(row[4].toString())), // Papier
-                              ]);
-                            }).toList(),
-                          ),
+                        child: DataTable(
+                          columnSpacing: 20,
+                          columns: const [
+                            DataColumn(label: Text('Straße')),
+                            DataColumn(label: Text('Restabfall')),
+                            DataColumn(label: Text('Bio')),
+                            DataColumn(label: Text('Wertstoff')),
+                            DataColumn(label: Text('Papier')),
+                          ],
+                          rows: _filteredData.map((row) {
+                            return DataRow(cells: [
+                              DataCell(Text(row[0].toString())), // Straße
+                              DataCell(Text(row[1].toString())), // Restabfall
+                              DataCell(Text(row[2].toString())), // Bio
+                              DataCell(Text(row[3].toString())), // Wertstoff
+                              DataCell(Text(row[4].toString())), // Papier
+                            ]);
+                          }).toList(),
                         ),
                       ),
               ),

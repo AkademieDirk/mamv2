@@ -34,6 +34,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: mamTheme,
       home: Scaffold(
         body: const StartScreen(),
