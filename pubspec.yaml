@@ -56,6 +56,8 @@ flutter:
     - assets/sheets/Testcsv.csv
     - assets/sheets/abfallABCv1.csv
     - assets/images/ABC.png
+    - assets/images/App-Basics/hintergrund.jpeg
+    - assets/images/App-Basics/logoMarl.png
    
 
 
