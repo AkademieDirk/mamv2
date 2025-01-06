@@ -84,22 +84,21 @@ class ListViewTrashAbcNewState extends State<ListViewTrashAbcNew> {
                 child: _filteredData.isEmpty
                     ? const Center(child: CircularProgressIndicator())
                     : InteractiveViewer(
+                        minScale: 0.5,
+                        maxScale: 4.0,
                         constrained: false,
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: DataTable(
-                            columnSpacing: 10,
-                            columns: const [
-                              DataColumn(label: Text('Bezeichnung')),
-                              DataColumn(label: Text('Entsorgung')),
-                            ],
-                            rows: _filteredData.map((row) {
-                              return DataRow(cells: [
-                                DataCell(Text(row[0].toString())), // Straße
-                                DataCell(Text(row[1].toString())), // Restabfall
-                              ]);
-                            }).toList(),
-                          ),
+                        child: DataTable(
+                          columnSpacing: 10,
+                          columns: const [
+                            DataColumn(label: Text('Bezeichnung')),
+                            DataColumn(label: Text('Entsorgung')),
+                          ],
+                          rows: _filteredData.map((row) {
+                            return DataRow(cells: [
+                              DataCell(Text(row[0].toString())), // Straße
+                              DataCell(Text(row[1].toString())), // Restabfall
+                            ]);
+                          }).toList(),
                         ),
                       ),
               ),
