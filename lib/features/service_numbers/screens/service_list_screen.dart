@@ -27,10 +27,14 @@ class ServiceListScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             final service = serviceList[index];
             final serviceName = service["service"] ?? " kein Name";
+            final address = service["address"] ?? "keine Adresse bekannt";
 
             final phoneNumber = service["phone"] ?? "keine Nummer";
             return StylishCard(
-                phoneNumber: phoneNumber, serviceName: serviceName);
+              phoneNumber: phoneNumber,
+              serviceName: serviceName,
+              address: address,
+            );
           },
         ),
       ),

@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 class StylishCard extends StatelessWidget {
   final String phoneNumber;
   final String serviceName;
+  final String address;
 
   const StylishCard(
-      {super.key, required this.phoneNumber, required this.serviceName});
+      {super.key,
+      required this.phoneNumber,
+      required this.serviceName,
+      required this.address});
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +21,9 @@ class StylishCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16), // Weniger Padding für kleinere Card
         constraints: const BoxConstraints(
-          minWidth: 250, // Maximale Breite der Card
-          maxWidth: 300, // Maximale Breite der Card
           minHeight: 150,
           maxHeight: 150,
+          maxWidth: 300,
         ),
         decoration: BoxDecoration(
           gradient: const LinearGradient(
@@ -50,7 +53,18 @@ class StylishCard extends StatelessWidget {
                   phoneNumber,
                   style: TextStyle(
                     fontSize: 16,
-                    color: Colors.white.withOpacity(0.7),
+                    color: Colors.white.withValues(),
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  softWrap: true,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  address,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white.withValues(),
                   ),
                 ),
               ],
