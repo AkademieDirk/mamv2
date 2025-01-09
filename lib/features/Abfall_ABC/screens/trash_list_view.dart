@@ -1,5 +1,3 @@
-// ignore_for_file: unused_field
-
 import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -26,7 +24,7 @@ class ListViewTrashAbcNewState extends State<ListViewTrashAbcNew> {
       List<List<dynamic>> listData =
           const CsvToListConverter().convert(rawData, fieldDelimiter: ";");
 
-      // Nur Zeilen mit mindestens 5 Spalten speichern
+      // Nur Zeilen mit mindestens 2 Spalten speichern
       setState(() {
         _data = listData.where((row) => row.length >= 2).toList();
         _filteredData = List.from(_data); // Anfangs alle Daten anzeigen
@@ -60,50 +58,67 @@ class ListViewTrashAbcNewState extends State<ListViewTrashAbcNew> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: appbarcolor,
-          title: const Text("Wie entsorge ich was?"),
-        ),
-        body: Container(
-          width: double.infinity,
-          decoration: background,
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  onChanged: _filterData, // Filtert die Daten bei jeder Eingabe
-                  decoration: const InputDecoration(
-                    labelText: "Suche",
-                    border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.search),
-                  ),
+      appBar: AppBar(
+        backgroundColor: appbarcolor,
+        title: const Text("Wie entsorge ich was?"),
+      ),
+      body: Container(
+        width: double.infinity,
+        decoration: background,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                onChanged: _filterData, // Filtert die Daten bei jeder Eingabe
+                decoration: const InputDecoration(
+                  labelText: "Suche",
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.search),
                 ),
               ),
-              Expanded(
-                child: _filteredData.isEmpty
-                    ? const Center(child: CircularProgressIndicator())
-                    : InteractiveViewer(
-                        minScale: 0.5,
-                        maxScale: 4.0,
-                        constrained: false,
-                        child: DataTable(
-                          columnSpacing: 10,
-                          columns: const [
-                            DataColumn(label: Text('Bezeichnung')),
-                            DataColumn(label: Text('Entsorgung')),
-                          ],
-                          rows: _filteredData.map((row) {
-                            return DataRow(cells: [
-                              DataCell(Text(row[0].toString())), // Straße
-                              DataCell(Text(row[1].toString())), // Restabfall
-                            ]);
-                          }).toList(),
-                        ),
-                      ),
-              ),
-            ],
-          ),
-        ));
+            ),
+            Expanded(
+              child: _filteredData.isEmpty
+                  ? const Center(child: CircularProgressIndicator())
+                  : ListView.builder(
+                      itemCount: _filteredData.length,
+                      itemBuilder: (context, index) {
+                        final row = _filteredData[index];
+                        final bezeichnung = row[0].toString();
+                        final entsorgung = row[1].toString();
+
+                        return Card(
+                          margin: const EdgeInsets.symmetric(
+                            vertical: 8.0,
+                            horizontal: 16.0,
+                          ),
+                          elevation: 5.0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: ListTile(
+                            title: Text(
+                              bezeichnung,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            subtitle: Text(
+                              entsorgung,
+                              style: const TextStyle(
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

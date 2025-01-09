@@ -251,7 +251,7 @@ class InteractiveFilteredCalendarState
                                 children: [
                                   Center(
                                     child: Text(
-                                      "Straße: ${row[0]}",
+                                      " ${row[0]}",
                                       style: const TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight
@@ -266,7 +266,11 @@ class InteractiveFilteredCalendarState
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text("Restabfall: ${row[1]}"),
+                                        Text(
+                                          "Restabfall: ${row[1]}",
+                                          style: const TextStyle(fontSize: 14),
+                                        ),
+                                        const SizedBox(),
                                         Text("Bio: ${row[2]}")
                                       ],
                                     ),

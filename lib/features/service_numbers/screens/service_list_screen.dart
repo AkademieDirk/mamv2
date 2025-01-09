@@ -4,6 +4,7 @@ import 'package:mamv2/config/themes/themes.dart';
 import 'package:mamv2/features/service_numbers/modells/service_list.dart';
 import 'package:mamv2/features/service_numbers/widgets/stylish_card.dart';
 import 'package:mamv2/shared/basic_app_bar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ServiceListScreen extends StatelessWidget {
   const ServiceListScreen({super.key});
@@ -31,13 +32,24 @@ class ServiceListScreen extends StatelessWidget {
 
             final phoneNumber = service["phone"] ?? "keine Nummer";
             return StylishCard(
-              phoneNumber: phoneNumber,
-              serviceName: serviceName,
-              address: address,
-            );
+                phoneNumber: phoneNumber,
+                serviceName: serviceName,
+                address: address,
+                onTap: () => _makePhoneCall(phoneNumber));
           },
         ),
       ),
     );
+  }
+}
+
+// Funktion, um den Anruf zu starten
+void _makePhoneCall(String phoneNumber) async {
+  final Uri phoneUrl =
+      Uri.parse('tel:$phoneNumber'); // Telefonnummer in URI umwandeln
+  if (await canLaunchUrl(phoneUrl)) {
+    await launchUrl(phoneUrl); // Starte den Anruf
+  } else {
+    print('Konnte die Telefonnummer nicht öffnen.');
   }
 }
