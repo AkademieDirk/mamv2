@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mamv2/config/colors/colors.dart';
 import 'package:mamv2/config/themes/themes.dart';
 import 'package:mamv2/features/service_numbers/modells/service_list.dart';
+import 'package:mamv2/features/service_numbers/widgets/stylish_card.dart';
 import 'package:mamv2/shared/basic_app_bar.dart';
 
 class ServiceListScreen extends StatelessWidget {
@@ -13,34 +14,26 @@ class ServiceListScreen extends StatelessWidget {
     final serviceList = ServiceList().getServiceList();
 
     return Scaffold(
-        appBar: const BasicAppBar(
-          title: 'Service Stadt Marl',
-          backgroundColor: appbarcolor,
-          canColorImagePath: "assets/images/App-Basics/logoMarl.png",
+      appBar: const BasicAppBar(
+        title: 'Service Stadt Marl',
+        backgroundColor: appbarcolor,
+        canColorImagePath: "assets/images/App-Basics/logoMarl.png",
+      ),
+      body: Container(
+        width: double.infinity,
+        decoration: background,
+        child: ListView.builder(
+          itemCount: serviceList.length,
+          itemBuilder: (context, index) {
+            final service = serviceList[index];
+            final serviceName = service["service"] ?? " kein Name";
+
+            final phoneNumber = service["phone"] ?? "keine Nummer";
+            return StylishCard(
+                phoneNumber: phoneNumber, serviceName: serviceName);
+          },
         ),
-        body: Container(
-          width: double.infinity,
-          decoration: background,
-          child: ListView.builder(
-            itemCount: serviceList.length,
-            itemBuilder: (context, index) {
-              final service = serviceList[index];
-              final listbackgroundColor = getRandomColor();
-              return Container(
-                color: listbackgroundColor,
-                child: ListTile(
-                  title: Text(
-                    service['service']!,
-                    style: const TextStyle(color: Colors.black),
-                  ),
-                  subtitle: Text(
-                    service['phone']!,
-                    style: const TextStyle(color: Colors.black),
-                  ),
-                ),
-              );
-            },
-          ),
-        ));
+      ),
+    );
   }
 }
