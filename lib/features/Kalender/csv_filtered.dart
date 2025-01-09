@@ -232,7 +232,7 @@ class InteractiveFilteredCalendarState
                               padding: const EdgeInsets.all(
                                   16), // Weniger Padding für kleinere Card
                               constraints: const BoxConstraints(
-                                minHeight: 150,
+                                minHeight: 100,
                                 maxHeight: 150,
                                 maxWidth: 300,
                               ),
